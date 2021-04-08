@@ -1,13 +1,13 @@
 import React from 'react'
 import './SidebarOption.css'
 
-const sidebarOption = ({Icons, text}) => {
+const SidebarOption = ({active, text, Icon}) => {
     return (
-        <div className='sidebarOption'>
-            <Icons/>
+        <div className={`sidebarOption ${active && "sidebarOption--active"}`}>
+            <Icon/>
             <h2>{text}</h2>
         </div>
     )
 }
 
-export default sidebarOption
+export default SidebarOption
