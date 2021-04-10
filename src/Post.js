@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {forwardRef} from 'react'
 import "./Post.css";
 import { Avatar } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
@@ -7,9 +7,11 @@ import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 
-const Post = ({ displayName, username, verified, text, image, avatar }) => {
+const Post = forwardRef(({ displayName, username, verified, text, image, avatar }, ref) => {
+    // const avatarImg = "https://avatars.githubusercontent.com/u/46249693?v=4";
+
     return (
-        <div className="post">
+        <div className="post" ref={ref}>
             <div className="post__avatar">
                 <Avatar src={avatar}/>
             </div>
@@ -17,10 +19,10 @@ const Post = ({ displayName, username, verified, text, image, avatar }) => {
                 <div className="post__header">
                     <div className="post__headerText">
                         <h3>
-                            {displayName}{" "}
+                            {displayName }{" "}
                             <span className="post__headerSpecial">
                                 {verified && <VerifiedUserIcon className="post__badge" />} @
-                                {username}
+                                {username }
                             </span>
                         </h3>
                     </div>
@@ -28,7 +30,7 @@ const Post = ({ displayName, username, verified, text, image, avatar }) => {
                         <p>{text}</p>
                     </div>
                 </div>
-                <img src={image} alt=""/> 
+                { image ? <img src={image} alt=""className="post__postImage"/> : null }
                 <div className="post__footer">
                     <ChatBubbleOutlineIcon fontSize="small" />
                     <RepeatIcon fontSize="small" />
@@ -39,6 +41,6 @@ const Post = ({ displayName, username, verified, text, image, avatar }) => {
             
         </div>
     )
-}
+})
 
 export default Post

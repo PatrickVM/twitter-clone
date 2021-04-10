@@ -12,6 +12,12 @@
   
   .post__body > img {
     border-radius: 20px;
+    
+  }
+
+  .post__postImage {
+    width: 100px;
+    height: 100px;
   }
   
   .post__footer {
